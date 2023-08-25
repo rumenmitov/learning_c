@@ -24,10 +24,22 @@ int main(int argc, char* args[]) {
   strcat(command, " > temp");
   system(command);
 
-  strcpy(command, "cat temp > ");
-  strcat(command, args[1]);
-  strcat(command, " && rm temp");
-  system(command);
+  FILE* temp = fopen("temp", "r");
+  FILE* userFile = fopen(args[1], "w");
+
+  char line[255];
+  while(fgets(line, 255, temp)) {
+      fprintf(userFile, "%s", line);
+  }
+
+  fclose(temp);
+  fclose(userFile);
+
+  remove("temp");
+  /* strcpy(command, "cat temp > "); */
+  /* strcat(command, args[1]); */
+  /* strcat(command, " && rm temp"); */
+  /* system(command); */
 
   return 0;
 }
