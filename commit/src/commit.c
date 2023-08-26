@@ -4,15 +4,15 @@
 
 int main(int argc, char* args[]) {
 
-  char commitMessage[255] = "git commit -m \"";
+    char commitMessage[255] = "git commit -m \"";
 
-  for (int i = 1; i < argc; i++) {
-    strcat(commitMessage, args[i]);
-    strcat(commitMessage, " ");
-  }
+    for (int i = 1; i < argc; i++) {
+        strcat(commitMessage, args[i]);
+        strcat(commitMessage, " ");
+    }
 
-  commitMessage[strlen(commitMessage)-1] = '"';
-  
-  system(commitMessage);
-  return 0;
+    commitMessage[strlen(commitMessage)-1] = '"';
+
+    system(commitMessage);
+    return 0;
 }
